@@ -24,8 +24,17 @@
         });
     }
 
+    self.detail = ko.observable();
+
+    self.getBookDetail = function (item) {
+        ajaxHelper(booksUri + item.Id, 'GET').done(function (data) {
+            self.detail(data);
+        });
+    }
+
     // Fetch the initial data.
     getAllBooks();
 };
 
 ko.applyBindings(new ViewModel());
+
